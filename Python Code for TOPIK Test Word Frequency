@@ -1,0 +1,17 @@
+from collections import Counter, defaultdict
+
+# f = open("vocabulary2.txt", encoding="utf8")
+# f2 = open("all_words_topik_level_1_11-34_listening_text+reading.txt", encoding="utf8")
+f3 = open("all_words_topik_level_1_35-52_listening_text+reading.txt", encoding="utf8")
+# f4 = open("all_words_topik_level_2_11-34_listening_text+reading.txt", encoding="utf8")
+b = f3.read().split()
+wordlist = b
+# invert a temporary Counter(wordlist) dictionary so keys are
+# frequency of occurrence and values are lists the words encountered
+freqword = defaultdict(list)
+for word, freq in Counter(wordlist).items():
+    freqword[freq].append(word)
+
+# print in order of occurrence (with sorted list of words)
+for freq in sorted(freqword):
+    print('count {}: {}'.format(freq, sorted(freqword[freq])))
